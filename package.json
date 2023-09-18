@@ -1,0 +1,8 @@
+{
+    "name": "readline-sync",
+    "version": "^1.4.9",
+    "dependencies": {
+        "create-react-app": "^5.0.1",
+        "readline-sync": "^1.4.9"
+    }
+}

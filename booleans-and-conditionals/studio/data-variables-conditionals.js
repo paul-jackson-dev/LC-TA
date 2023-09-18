@@ -26,7 +26,7 @@ let fuelLevel = "100%";
 
 let weatherStatus = "clear";
 
-// add logic below to verify total number of astronauts for shuttle launch does not exceed 7
+// // add logic below to verify total number of astronauts for shuttle launch does not exceed 7
 let flag = true;
 if (astronautCount > 7){ flag = false}
 if (!astronautStatus === "ready"){flag = false}

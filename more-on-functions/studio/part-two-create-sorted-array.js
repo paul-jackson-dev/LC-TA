@@ -9,6 +9,17 @@ function findMinValue(arr){
 }
 
 //Create a function with an array of numbers as its parameter. This function will return a new array with the numbers sorted from least to greatest value.
+function sortArray(array){
+  let sortedArray = [];
+  let min;
+  while (true) {
+    min = findMinValue(array);
+    sortedArray.push(min)
+    array.splice(array.indexOf(min),1);
+    if(array.length === 0){break;}
+  }
+  return sortedArray;
+}
 
 /*Within the function:
 1) Define a new, empty array to hold the final sorted numbers.
@@ -19,6 +30,14 @@ function findMinValue(arr){
 6) Be sure to print the results in order to verify your code.*/
 
 //Your function here...
+function sortWithRecursion(array, sortedArray = []){
+  //base case
+  if (array.length === 0){return sortedArray;}
+  let min = findMinValue(array);
+  sortedArray.push(min)
+  array.splice(array.indexOf(min),1);
+  return sortWithRecursion(array, sortedArray)
+}
 
 /* BONUS MISSION: Refactor your sorting function to use recursion below:
  */
@@ -27,3 +46,17 @@ function findMinValue(arr){
 let nums1 = [5, 10, 2, 42];
 let nums2 = [-2, 0, -10, -44, 5, 3, 0, 3];
 let nums3 = [200, 5, 4, 10, 8, 5, -3.3, 4.4, 0];
+
+console.log("Regular Sort");
+console.log(sortArray(nums1));
+console.log(sortArray(nums2));
+console.log(sortArray(nums3));
+
+nums1 = [5, 10, 2, 42];
+nums2 = [-2, 0, -10, -44, 5, 3, 0, 3];
+nums3 = [200, 5, 4, 10, 8, 5, -3.3, 4.4, 0];
+
+console.log("Recusive Sort");
+console.log(sortWithRecursion(nums1));
+console.log(sortWithRecursion(nums2));
+console.log(sortWithRecursion(nums3));

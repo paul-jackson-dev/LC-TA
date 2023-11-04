@@ -1,3 +1,13 @@
+body {
+    background-color:black;
+    color: lightgray;
+}
+
+button {
+    background-color: hotpink;
+    border: 0px;
+}
+
 #shuttleBackground {
     background-color: green;
     display: inline-block;
@@ -7,7 +17,7 @@
 }
 
 #flightStatus {
-    color: green;
+    color: hotpink;
 }
 
 #flightDisplay {
@@ -27,4 +37,10 @@
 
 .centered {
     text-align: center;
+}
+
+#rocket {
+  position: absolute;  
+  /* bottom: 0px;
+  left: 250px; */
 }

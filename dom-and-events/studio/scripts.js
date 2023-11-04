@@ -11,7 +11,16 @@ window.addEventListener("load", function (){
     let down = document.getElementById("down");
     let right = document.getElementById("right");
     let left = document.getElementById("left");
+    let rocket = document.getElementById("rocket")
+    // let upPosition = parseInt(getComputedStyle(rocket).bottom);
+    // let leftPosition = parseInt(getComputedStyle(rocket).left);
+    let upPosition = 0;
+    let leftPosition = 250;
 
+    // set initial rocket position
+    rocket.style.position = "absolute";
+    rocket.style.bottom = upPosition + "px";
+    rocket.style.left = leftPosition + "px";
 
 
     // takeoff
@@ -21,7 +30,7 @@ window.addEventListener("load", function (){
             flightStatus.innerHTML = "Shuttle in flight"
             shuttleBackground.style.background = "blue";
             spaceShuttleHeight.innerHTML = 10000;
-
+            rocket.style.transform = "rotate(0deg)";
         }
     })
 
@@ -31,6 +40,9 @@ window.addEventListener("load", function (){
         flightStatus.innerHTML = "The shuttle has landed."
         shuttleBackground.style.background = "green";
         spaceShuttleHeight.innerHTML = 0;
+        rocket.style.bottom = "0px";
+        rocket.style.left = "250px";
+        rocket.style.transform = "rotate(0deg)";
     })
 
     // abort
@@ -39,8 +51,68 @@ window.addEventListener("load", function (){
             flightStatus.innerHTML = "Mission aborted!";
             shuttleBackground.style.background = "red";
             spaceShuttleHeight.innerHTML = 0;
+            rocket.style.transform = "rotate(180deg)";
+            rocket.style.bottom = "0px";
+            rocket.style.left = "250px";
         }
     })
+
+    //up
+    up.addEventListener("click", function(){
+        spaceShuttleHeight.innerHTML = parseInt(spaceShuttleHeight.innerHTML) + 10000;
+        upPosition += 10;
+        rocket.style.bottom = upPosition + "px";
+        // upPosition = parseInt(getComputedStyle(rocket).bottom);
+    })
+
+    //down
+    down.addEventListener("click", function(){
+        spaceShuttleHeight.innerHTML = parseInt(spaceShuttleHeight.innerHTML) - 10000;
+        upPosition -= 10
+        rocket.style.bottom = upPosition + "px";
+        // upPosition = parseInt(getComputedStyle(rocket).bottom);
+    })
+
+    //left
+    left.addEventListener("click", function(){
+        leftPosition -= 10
+        rocket.style.left = leftPosition + "px";
+        // leftPosition = parseInt(getComputedStyle(rocket).left);
+    })
+
+    //right
+    right.addEventListener("click", function(){
+        leftPosition += 10;
+        rocket.style.left = leftPosition + "px";
+        // leftPosition = parseInt(getComputedStyle(rocket).left);
+    })
+
+    document.onkeydown = function(e) { 
+        switch (e.keyCode) { 
+            case 37: 
+                rocket.style.left = (leftPosition - 10) + "px";
+                leftPosition = parseInt(getComputedStyle(rocket).left);
+                rocket.style.transform = "rotate(270deg)";
+                break;
+            case 38: 
+                spaceShuttleHeight.innerHTML = parseInt(spaceShuttleHeight.innerHTML) + 10000;
+                upPosition += 10;
+                rocket.style.bottom = upPosition + "px";
+                rocket.style.transform = "rotate(0deg)";
+                break; 
+            case 39: 
+                rocket.style.left = (leftPosition + 10) + "px";
+                leftPosition = parseInt(getComputedStyle(rocket).left);
+                rocket.style.transform = "rotate(90deg)";
+                break; 
+            case 40: 
+                spaceShuttleHeight.innerHTML = parseInt(spaceShuttleHeight.innerHTML) - 10000;
+                upPosition -= 10
+                rocket.style.bottom = upPosition + "px";
+                rocket.style.transform = "rotate(180deg)";
+                break; 
+        } 
+    };
 
     
 
